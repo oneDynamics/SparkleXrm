@@ -328,6 +328,12 @@ namespace SparkleXrmTask
                     { ExcludePluginSteps = arguments.ExcludePluginSteps };
                     break;
 
+                case "packages":
+                    trace.WriteLine("Deploying Plugin Package");
+                    task = new DeployPluginPackagesTask(service, trace)
+                    { ExcludePluginSteps = arguments.ExcludePluginSteps };
+                    break;
+
                 case "workflow":
                     trace.WriteLine("Deploying Custom Workflow Activities");
                     task = new DeployWorkflowActivitiesTask(service, trace);

@@ -15,7 +15,7 @@ namespace SparkleXrm.Tasks
 	
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum customapi_allowedcustomprocessingsteptype
 	{
 		
@@ -30,7 +30,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum customapi_bindingtype
 	{
 		
@@ -45,7 +45,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum CustomAPIState
 	{
 		
@@ -57,7 +57,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum customapi_statuscode
 	{
 		
@@ -73,7 +73,7 @@ namespace SparkleXrm.Tasks
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("customapi")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public partial class CustomAPI : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -87,7 +87,11 @@ namespace SparkleXrm.Tasks
 		
 		public const string EntityLogicalName = "customapi";
 		
-		public const int EntityTypeCode = 10052;
+		public const string EntityLogicalCollectionName = "customapis";
+		
+		public const string EntitySetName = "customapis";
+		
+		public const int EntityTypeCode = 10335;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -749,6 +753,24 @@ namespace SparkleXrm.Tasks
 		}
 		
 		/// <summary>
+		/// Indicates if the custom API is enabled as a workflow action
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("workflowsdkstepenabled")]
+		public System.Nullable<bool> WorkflowSdkStepEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("workflowsdkstepenabled");
+			}
+			set
+			{
+				this.OnPropertyChanging("WorkflowSdkStepEnabled");
+				this.SetAttributeValue("workflowsdkstepenabled", value);
+				this.OnPropertyChanged("WorkflowSdkStepEnabled");
+			}
+		}
+		
+		/// <summary>
 		/// N:1 plugintype_customapi
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("plugintypeid")]
@@ -788,7 +810,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum pluginassembly_authtype
 	{
 		
@@ -797,7 +819,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum pluginassembly_isolationmode
 	{
 		
@@ -812,7 +834,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum pluginassembly_sourcetype
 	{
 		
@@ -827,6 +849,9 @@ namespace SparkleXrm.Tasks
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		AzureWebApp = 3,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		FileStore = 4,
 	}
 	
 	/// <summary>
@@ -834,7 +859,7 @@ namespace SparkleXrm.Tasks
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("pluginassembly")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public partial class PluginAssembly : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -847,6 +872,10 @@ namespace SparkleXrm.Tasks
 		}
 		
 		public const string EntityLogicalName = "pluginassembly";
+		
+		public const string EntityLogicalCollectionName = "pluginassemblies";
+		
+		public const string EntitySetName = "pluginassemblies";
 		
 		public const int EntityTypeCode = 4605;
 		
@@ -1141,6 +1170,24 @@ namespace SparkleXrm.Tasks
 		}
 		
 		/// <summary>
+		/// Unique identifier for managedidentity associated with pluginassembly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("managedidentityid")]
+		public Microsoft.Xrm.Sdk.EntityReference ManagedIdentityId
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("managedidentityid");
+			}
+			set
+			{
+				this.OnPropertyChanging("ManagedIdentityId");
+				this.SetAttributeValue("managedidentityid", value);
+				this.OnPropertyChanged("ManagedIdentityId");
+			}
+		}
+		
+		/// <summary>
 		/// Minor of the assembly version.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("minor")]
@@ -1227,6 +1274,24 @@ namespace SparkleXrm.Tasks
 			get
 			{
 				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for Plugin Package associated with Plug-in Assembly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("packageid")]
+		public Microsoft.Xrm.Sdk.EntityReference PackageId
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("packageid");
+			}
+			set
+			{
+				this.OnPropertyChanging("PackageId");
+				this.SetAttributeValue("packageid", value);
+				this.OnPropertyChanged("PackageId");
 			}
 		}
 		
@@ -1481,6 +1546,554 @@ namespace SparkleXrm.Tasks
 				this.OnPropertyChanged("pluginassembly_plugintype");
 			}
 		}
+		
+		/// <summary>
+		/// N:1 pluginpackage_pluginassembly
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("packageid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("pluginpackage_pluginassembly")]
+		public SparkleXrm.Tasks.pluginpackage pluginpackage_pluginassembly
+		{
+			get
+			{
+				return this.GetRelatedEntity<SparkleXrm.Tasks.pluginpackage>("pluginpackage_pluginassembly", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("pluginpackage_pluginassembly");
+				this.SetRelatedEntity<SparkleXrm.Tasks.pluginpackage>("pluginpackage_pluginassembly", null, value);
+				this.OnPropertyChanged("pluginpackage_pluginassembly");
+			}
+		}
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
+	public enum pluginpackageState
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Inactive = 1,
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
+	public enum pluginpackage_statuscode
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Inactive = 2,
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("pluginpackage")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
+	public partial class pluginpackage : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		public pluginpackage() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "pluginpackage";
+		
+		public const string EntityLogicalCollectionName = "pluginpackages";
+		
+		public const string EntitySetName = "pluginpackages";
+		
+		public const int EntityTypeCode = 10575;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentidunique")]
+		public System.Nullable<System.Guid> ComponentIdUnique
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("componentidunique");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ComponentState
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("content")]
+		public string Content
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("content");
+			}
+			set
+			{
+				this.OnPropertyChanging("Content");
+				this.SetAttributeValue("content", value);
+				this.OnPropertyChanged("Content");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("encodedcontents")]
+		public string EncodedContents
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("encodedcontents");
+			}
+			set
+			{
+				this.OnPropertyChanging("EncodedContents");
+				this.SetAttributeValue("encodedcontents", value);
+				this.OnPropertyChanged("EncodedContents");
+			}
+		}
+		
+		/// <summary>
+		/// Sequence number of the import that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscustomizable")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty IsCustomizable
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("iscustomizable");
+			}
+			set
+			{
+				this.OnPropertyChanging("IsCustomizable");
+				this.SetAttributeValue("iscustomizable", value);
+				this.OnPropertyChanged("IsCustomizable");
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether the solution component is part of a managed solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
+		public System.Nullable<bool> IsManaged
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanaged");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// The name of the plugin package entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string name
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			set
+			{
+				this.OnPropertyChanging("name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("name");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the organization
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overwritetime")]
+		public System.Nullable<System.DateTime> OverwriteTime
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for entity instances
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pluginpackageid")]
+		public System.Nullable<System.Guid> pluginpackageId
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("pluginpackageid");
+			}
+			set
+			{
+				this.OnPropertyChanging("pluginpackageId");
+				this.SetAttributeValue("pluginpackageid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("pluginpackageId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pluginpackageid")]
+		public override System.Guid Id
+		{
+			get
+			{
+				return base.Id;
+			}
+			set
+			{
+				this.pluginpackageId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the associated solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+		public System.Nullable<System.Guid> SolutionId
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("solutionid");
+			}
+		}
+		
+		/// <summary>
+		/// Status of the Plugin Package
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<SparkleXrm.Tasks.pluginpackageState> statecode
+		{
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((SparkleXrm.Tasks.pluginpackageState)(System.Enum.ToObject(typeof(SparkleXrm.Tasks.pluginpackageState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			set
+			{
+				this.OnPropertyChanging("statecode");
+				if ((value == null))
+				{
+					this.SetAttributeValue("statecode", null);
+				}
+				else
+				{
+					this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("statecode");
+			}
+		}
+		
+		/// <summary>
+		/// Reason for the status of the Plugin Package
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public System.Nullable<SparkleXrm.Tasks.pluginpackage_statuscode> statuscode
+		{
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+				if ((optionSet != null))
+				{
+					return ((SparkleXrm.Tasks.pluginpackage_statuscode)(System.Enum.ToObject(typeof(SparkleXrm.Tasks.pluginpackage_statuscode), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			set
+			{
+				this.OnPropertyChanging("statuscode");
+				if ((value == null))
+				{
+					this.SetAttributeValue("statuscode", null);
+				}
+				else
+				{
+					this.SetAttributeValue("statuscode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("statuscode");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Unique name for the package
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uniquename")]
+		public string UniqueName
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("uniquename");
+			}
+			set
+			{
+				this.OnPropertyChanging("UniqueName");
+				this.SetAttributeValue("uniquename", value);
+				this.OnPropertyChanged("UniqueName");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// Version of the package
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("version")]
+		public string Version
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("version");
+			}
+			set
+			{
+				this.OnPropertyChanging("Version");
+				this.SetAttributeValue("version", value);
+				this.OnPropertyChanged("Version");
+			}
+		}
+		
+		/// <summary>
+		/// Version Number
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N pluginpackage_pluginassembly
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("pluginpackage_pluginassembly")]
+		public System.Collections.Generic.IEnumerable<SparkleXrm.Tasks.PluginAssembly> pluginpackage_pluginassembly
+		{
+			get
+			{
+				return this.GetRelatedEntities<SparkleXrm.Tasks.PluginAssembly>("pluginpackage_pluginassembly", null);
+			}
+			set
+			{
+				this.OnPropertyChanging("pluginpackage_pluginassembly");
+				this.SetRelatedEntities<SparkleXrm.Tasks.PluginAssembly>("pluginpackage_pluginassembly", null, value);
+				this.OnPropertyChanged("pluginpackage_pluginassembly");
+			}
+		}
 	}
 	
 	/// <summary>
@@ -1488,7 +2101,7 @@ namespace SparkleXrm.Tasks
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("plugintype")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public partial class PluginType : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -1501,6 +2114,10 @@ namespace SparkleXrm.Tasks
 		}
 		
 		public const string EntityLogicalName = "plugintype";
+		
+		public const string EntityLogicalCollectionName = "plugintypes";
+		
+		public const string EntitySetName = "plugintypes";
 		
 		public const int EntityTypeCode = 4602;
 		
@@ -1680,9 +2297,9 @@ namespace SparkleXrm.Tasks
 			}
             set
             {
-				this.SetAttributeValue("isworkflowactivity", value);
-			}
-		}
+                this.SetAttributeValue("isworkflowactivity", value);
+            }
+        }
 		
 		/// <summary>
 		/// Major of the version number of the assembly for the plug-in type.
@@ -2018,7 +2635,7 @@ namespace SparkleXrm.Tasks
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("sdkmessage")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public partial class SdkMessage : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -2031,6 +2648,10 @@ namespace SparkleXrm.Tasks
 		}
 		
 		public const string EntityLogicalName = "sdkmessage";
+		
+		public const string EntityLogicalCollectionName = "sdkmessages";
+		
+		public const string EntitySetName = "sdkmessages";
 		
 		public const int EntityTypeCode = 4606;
 		
@@ -2573,7 +3194,7 @@ namespace SparkleXrm.Tasks
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("sdkmessagefilter")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public partial class SdkMessageFilter : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -2586,6 +3207,10 @@ namespace SparkleXrm.Tasks
 		}
 		
 		public const string EntityLogicalName = "sdkmessagefilter";
+		
+		public const string EntityLogicalCollectionName = "sdkmessagefilters";
+		
+		public const string EntitySetName = "sdkmessagefilters";
 		
 		public const int EntityTypeCode = 4607;
 		
@@ -2837,9 +3462,9 @@ namespace SparkleXrm.Tasks
 			}
             set
             {
-				this.SetAttributeValue("primaryobjecttypecode", value);
-			}
-		}
+                this.SetAttributeValue("primaryobjecttypecode", value);
+            }
+        }
 		
 		/// <summary>
 		/// For internal use only.
@@ -3019,7 +3644,7 @@ namespace SparkleXrm.Tasks
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("sdkmessagepair")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public partial class SdkMessagePair : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -3032,6 +3657,10 @@ namespace SparkleXrm.Tasks
 		}
 		
 		public const string EntityLogicalName = "sdkmessagepair";
+		
+		public const string EntityLogicalCollectionName = "sdkmessagepairs";
+		
+		public const string EntitySetName = "sdkmessagepairs";
 		
 		public const int EntityTypeCode = 4613;
 		
@@ -3379,7 +4008,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum sdkmessageprocessingstep_invocationsource
 	{
 		
@@ -3394,7 +4023,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum sdkmessageprocessingstep_mode
 	{
 		
@@ -3406,7 +4035,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum sdkmessageprocessingstep_stage
 	{
 		
@@ -3451,7 +4080,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum SdkMessageProcessingStepState
 	{
 		
@@ -3463,7 +4092,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum sdkmessageprocessingstep_statuscode
 	{
 		
@@ -3475,7 +4104,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum sdkmessageprocessingstep_supporteddeployment
 	{
 		
@@ -3494,7 +4123,7 @@ namespace SparkleXrm.Tasks
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("sdkmessageprocessingstep")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public partial class SdkMessageProcessingStep : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -3507,6 +4136,10 @@ namespace SparkleXrm.Tasks
 		}
 		
 		public const string EntityLogicalName = "sdkmessageprocessingstep";
+		
+		public const string EntityLogicalCollectionName = "sdkmessageprocessingsteps";
+		
+		public const string EntitySetName = "sdkmessageprocessingsteps";
 		
 		public const int EntityTypeCode = 4608;
 		
@@ -3563,6 +4196,24 @@ namespace SparkleXrm.Tasks
 				this.OnPropertyChanging("CanUseReadOnlyConnection");
 				this.SetAttributeValue("canusereadonlyconnection", value);
 				this.OnPropertyChanged("CanUseReadOnlyConnection");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("category")]
+		public string Category
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("category");
+			}
+			set
+			{
+				this.OnPropertyChanging("Category");
+				this.SetAttributeValue("category", value);
+				this.OnPropertyChanged("Category");
 			}
 		}
 		
@@ -3965,6 +4616,24 @@ namespace SparkleXrm.Tasks
 		}
 		
 		/// <summary>
+		/// Unique identifier for powerfxrule associated with SdkMessageProcessingStep.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("powerfxruleid")]
+		public Microsoft.Xrm.Sdk.EntityReference PowerfxRuleId
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("powerfxruleid");
+			}
+			set
+			{
+				this.OnPropertyChanging("PowerfxRuleId");
+				this.SetAttributeValue("powerfxruleid", value);
+				this.OnPropertyChanged("PowerfxRuleId");
+			}
+		}
+		
+		/// <summary>
 		/// Processing order within the stage.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rank")]
@@ -3979,6 +4648,24 @@ namespace SparkleXrm.Tasks
 				this.OnPropertyChanging("Rank");
 				this.SetAttributeValue("rank", value);
 				this.OnPropertyChanged("Rank");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only. Holds miscellaneous properties related to runtime integration.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("runtimeintegrationproperties")]
+		public string RuntimeIntegrationProperties
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("runtimeintegrationproperties");
+			}
+			set
+			{
+				this.OnPropertyChanging("RuntimeIntegrationProperties");
+				this.SetAttributeValue("runtimeintegrationproperties", value);
+				this.OnPropertyChanged("RuntimeIntegrationProperties");
 			}
 		}
 		
@@ -4377,7 +5064,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum sdkmessageprocessingstepimage_imagetype
 	{
 		
@@ -4396,7 +5083,7 @@ namespace SparkleXrm.Tasks
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("sdkmessageprocessingstepimage")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public partial class SdkMessageProcessingStepImage : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -4409,6 +5096,10 @@ namespace SparkleXrm.Tasks
 		}
 		
 		public const string EntityLogicalName = "sdkmessageprocessingstepimage";
+		
+		public const string EntityLogicalCollectionName = "sdkmessageprocessingstepimages";
+		
+		public const string EntitySetName = "sdkmessageprocessingstepimages";
 		
 		public const int EntityTypeCode = 4615;
 		
@@ -4859,7 +5550,7 @@ namespace SparkleXrm.Tasks
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("sdkmessageprocessingstepsecureconfig")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public partial class SdkMessageProcessingStepSecureConfig : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -4872,6 +5563,10 @@ namespace SparkleXrm.Tasks
 		}
 		
 		public const string EntityLogicalName = "sdkmessageprocessingstepsecureconfig";
+		
+		public const string EntityLogicalCollectionName = "sdkmessageprocessingstepsecureconfigs";
+		
+		public const string EntitySetName = "sdkmessageprocessingstepsecureconfigs";
 		
 		public const int EntityTypeCode = 4616;
 		
@@ -5080,7 +5775,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum serviceendpoint_authtype
 	{
 		
@@ -5101,10 +5796,16 @@ namespace SparkleXrm.Tasks
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		HttpQueryString = 6,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		ConnectionString = 7,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		AccessKey = 8,
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum serviceendpoint_connectionmode
 	{
 		
@@ -5116,7 +5817,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum serviceendpoint_contract
 	{
 		
@@ -5143,10 +5844,25 @@ namespace SparkleXrm.Tasks
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Webhook = 8,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		EventGrid = 9,
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
+	public enum serviceendpoint_messagecharset
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Default = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UTF8 = 1,
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum serviceendpoint_messageformat
 	{
 		
@@ -5161,7 +5877,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum serviceendpoint_namespaceformat
 	{
 		
@@ -5173,7 +5889,19 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
+	public enum serviceendpoint_schematype
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		EventGrid = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		CloudEvents = 2,
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum serviceendpoint_userclaim
 	{
 		
@@ -5192,7 +5920,7 @@ namespace SparkleXrm.Tasks
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("serviceendpoint")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public partial class ServiceEndpoint : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -5205,6 +5933,10 @@ namespace SparkleXrm.Tasks
 		}
 		
 		public const string EntityLogicalName = "serviceendpoint";
+		
+		public const string EntityLogicalCollectionName = "serviceendpoints";
+		
+		public const string EntitySetName = "serviceendpoints";
 		
 		public const int EntityTypeCode = 4618;
 		
@@ -5496,6 +6228,57 @@ namespace SparkleXrm.Tasks
 		}
 		
 		/// <summary>
+		/// Unique identifier for keyvaultreference associated with serviceendpoint.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("keyvaultreferenceid")]
+		public Microsoft.Xrm.Sdk.EntityReference KeyVaultReferenceId
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("keyvaultreferenceid");
+			}
+			set
+			{
+				this.OnPropertyChanging("KeyVaultReferenceId");
+				this.SetAttributeValue("keyvaultreferenceid", value);
+				this.OnPropertyChanged("KeyVaultReferenceId");
+			}
+		}
+		
+		/// <summary>
+		/// Specifies the character encoding for message content
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("messagecharset")]
+		public System.Nullable<SparkleXrm.Tasks.serviceendpoint_messagecharset> MessageCharset
+		{
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("messagecharset");
+				if ((optionSet != null))
+				{
+					return ((SparkleXrm.Tasks.serviceendpoint_messagecharset)(System.Enum.ToObject(typeof(SparkleXrm.Tasks.serviceendpoint_messagecharset), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			set
+			{
+				this.OnPropertyChanging("MessageCharset");
+				if ((value == null))
+				{
+					this.SetAttributeValue("messagecharset", null);
+				}
+				else
+				{
+					this.SetAttributeValue("messagecharset", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("MessageCharset");
+			}
+		}
+		
+		/// <summary>
 		/// Content type of the message
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("messageformat")]
@@ -5676,6 +6459,24 @@ namespace SparkleXrm.Tasks
 		}
 		
 		/// <summary>
+		/// For internal use only. Holds miscellaneous properties related to runtime integration.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("runtimeintegrationproperties")]
+		public string RuntimeIntegrationProperties
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("runtimeintegrationproperties");
+			}
+			set
+			{
+				this.OnPropertyChanging("RuntimeIntegrationProperties");
+				this.SetAttributeValue("runtimeintegrationproperties", value);
+				this.OnPropertyChanged("RuntimeIntegrationProperties");
+			}
+		}
+		
+		/// <summary>
 		/// Shared Access Key
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("saskey")]
@@ -5726,6 +6527,39 @@ namespace SparkleXrm.Tasks
 				this.OnPropertyChanging("SASToken");
 				this.SetAttributeValue("sastoken", value);
 				this.OnPropertyChanged("SASToken");
+			}
+		}
+		
+		/// <summary>
+		/// Specifies schema type for event grid events
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("schematype")]
+		public System.Nullable<SparkleXrm.Tasks.serviceendpoint_schematype> SchemaType
+		{
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("schematype");
+				if ((optionSet != null))
+				{
+					return ((SparkleXrm.Tasks.serviceendpoint_schematype)(System.Enum.ToObject(typeof(SparkleXrm.Tasks.serviceendpoint_schematype), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			set
+			{
+				this.OnPropertyChanging("SchemaType");
+				if ((value == null))
+				{
+					this.SetAttributeValue("schematype", null);
+				}
+				else
+				{
+					this.SetAttributeValue("schematype", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("SchemaType");
 			}
 		}
 		
@@ -5829,6 +6663,24 @@ namespace SparkleXrm.Tasks
 		}
 		
 		/// <summary>
+		/// Use Auth Information in KeyVault
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("usekeyvaultconfiguration")]
+		public System.Nullable<bool> UseKeyVaultConfiguration
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("usekeyvaultconfiguration");
+			}
+			set
+			{
+				this.OnPropertyChanging("UseKeyVaultConfiguration");
+				this.SetAttributeValue("usekeyvaultconfiguration", value);
+				this.OnPropertyChanged("UseKeyVaultConfiguration");
+			}
+		}
+		
+		/// <summary>
 		/// Additional user claim value type.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("userclaim")]
@@ -5881,7 +6733,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum solution_solutiontype
 	{
 		
@@ -5900,7 +6752,7 @@ namespace SparkleXrm.Tasks
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("solution")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public partial class Solution : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -5913,6 +6765,10 @@ namespace SparkleXrm.Tasks
 		}
 		
 		public const string EntityLogicalName = "solution";
+		
+		public const string EntityLogicalCollectionName = "solutions";
+		
+		public const string EntitySetName = "solutions";
 		
 		public const int EntityTypeCode = 7100;
 		
@@ -6309,6 +7165,24 @@ namespace SparkleXrm.Tasks
 		}
 		
 		/// <summary>
+		/// thumbprint of the solution signature
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("thumbprint")]
+		public string Thumbprint
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("thumbprint");
+			}
+			set
+			{
+				this.OnPropertyChanging("Thumbprint");
+				this.SetAttributeValue("thumbprint", value);
+				this.OnPropertyChanged("Thumbprint");
+			}
+		}
+		
+		/// <summary>
 		/// The unique name of this solution
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uniquename")]
@@ -6450,7 +7324,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum solutioncomponent_rootcomponentbehavior
 	{
 		
@@ -6469,7 +7343,7 @@ namespace SparkleXrm.Tasks
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("solutioncomponent")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public partial class SolutionComponent : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -6482,6 +7356,10 @@ namespace SparkleXrm.Tasks
 		}
 		
 		public const string EntityLogicalName = "solutioncomponent";
+		
+		public const string EntityLogicalCollectionName = "solutioncomponentss";
+		
+		public const string EntitySetName = "solutioncomponents";
 		
 		public const int EntityTypeCode = 7103;
 		
@@ -6740,7 +7618,7 @@ namespace SparkleXrm.Tasks
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public enum webresource_webresourcetype
 	{
 		
@@ -6786,7 +7664,7 @@ namespace SparkleXrm.Tasks
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("webresource")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public partial class WebResource : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -6799,6 +7677,10 @@ namespace SparkleXrm.Tasks
 		}
 		
 		public const string EntityLogicalName = "webresource";
+		
+		public const string EntityLogicalCollectionName = "webresources";
+		
+		public const string EntitySetName = "webresourceset";
 		
 		public const int EntityTypeCode = 9333;
 		
@@ -7324,7 +8206,7 @@ namespace SparkleXrm.Tasks
 	/// <summary>
 	/// Represents a source of entities bound to a CRM service. It tracks and manages changes made to the retrieved entities.
 	/// </summary>
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.28")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.82")]
 	public partial class OrganizationServiceContext1 : Microsoft.Xrm.Sdk.Client.OrganizationServiceContext
 	{
 		
@@ -7355,6 +8237,17 @@ namespace SparkleXrm.Tasks
 			get
 			{
 				return this.CreateQuery<SparkleXrm.Tasks.PluginAssembly>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="SparkleXrm.Tasks.pluginpackage"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<SparkleXrm.Tasks.pluginpackage> pluginpackageSet
+		{
+			get
+			{
+				return this.CreateQuery<SparkleXrm.Tasks.pluginpackage>();
 			}
 		}
 		

@@ -12,6 +12,7 @@ namespace SparkleXrm.Tasks.Config
     public class ConfigFile
     {
         public List<WebresourceDeployConfig> webresources;
+        public List<PackageDeployConfig> packages;
         public List<PluginDeployConfig> plugins;
         public List<EarlyBoundTypeConfig> earlyboundtypes;
         public List<SolutionPackageConfig> solutions;
@@ -131,6 +132,30 @@ namespace SparkleXrm.Tasks.Config
             return config;
         }
 
+        public virtual PackageDeployConfig[] GetPackagesConfig(string profile)
+        {
+            PackageDeployConfig[] config = null;
+            if (packages == null)
+                return new PackageDeployConfig[0];
+
+            if (profile == "default")
+            {
+                profile = null;
+            }
+
+            if (profile != null)
+            {
+                config = packages.Where(c => c.profile != null && c.profile.Replace(" ", "").Split(',').Contains(profile)).ToArray();
+            }
+            else
+            {
+                // Default profile or empty
+                config = packages.Where(c => c.profile == null || c.profile.Replace(" ", "").Split(',').Contains("default") || String.IsNullOrWhiteSpace(c.profile)).ToArray();
+            }
+
+            return config;
+        }
+
         public virtual List<string> GetAssemblies(PluginDeployConfig plugin)
         {
             var file = plugin.assemblypath;
@@ -142,6 +167,19 @@ namespace SparkleXrm.Tasks.Config
 
             assemblies = ServiceLocator.DirectoryService.Search(this.filePath, file);
             return assemblies;
+        }
+
+        public virtual List<string> GetNugets(PackageDeployConfig package)
+        {
+            var file = package.packagepath; 
+
+            List<string> nugets;
+            var extension = Path.GetExtension(file);
+
+            if (extension == "") file = Path.Combine(file, "*.nupkg");
+
+            nugets = ServiceLocator.DirectoryService.Search(this.filePath, file);
+            return nugets;
         }
     }
 
