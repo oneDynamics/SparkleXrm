@@ -126,12 +126,12 @@ namespace SparkleXrm.Tasks
             _service.Execute(addToSolution);
         }
 
-        private void AddPackageToSolution(string solutionName, pluginpackage package)
+        private void AddPackageToSolution(string solutionName, pluginpackage package, int componentType)
         {
             var addToSolution = new AddSolutionComponentRequest()
             {
                 ComponentId = package.Id,
-                ComponentType = 10090, 
+                ComponentType = componentType, 
                 SolutionUniqueName = solutionName
             };
             _trace.WriteLine("Adding to solution '{0}'", solutionName);
@@ -196,7 +196,7 @@ namespace SparkleXrm.Tasks
             }
         }
 
-        public void RegisterPackage(string file, string packagePrefix, bool excludePluginSteps = false)
+        public void RegisterPackage(string file, string packagePrefix, int componentType, bool excludePluginSteps = false)
         {
             var packageFilePath = new FileInfo(file);
 
@@ -204,7 +204,7 @@ namespace SparkleXrm.Tasks
                 return;
 
             //TODO: Plugin types should be passed hwre
-            var package = RegisterPackage(packageFilePath, packagePrefix);
+            var package = RegisterPackage(packageFilePath, packagePrefix, componentType);
 
             var plugins = (from p in _ctx.CreateQuery<PluginAssembly>()
                            where p.PackageId.Id == package.Id
@@ -296,7 +296,7 @@ namespace SparkleXrm.Tasks
             return plugin;
         }
 
-        private pluginpackage RegisterPackage(FileInfo packageFilePath, string packagePrefix)
+        private pluginpackage RegisterPackage(FileInfo packageFilePath, string packagePrefix, int componentType)
         {
             using (var fsSource = new FileStream(packageFilePath.FullName,
                 FileMode.Open, FileAccess.Read, FileShare.Read))
@@ -346,7 +346,7 @@ namespace SparkleXrm.Tasks
                 if (SolutionUniqueName != null)
                 {
                     _trace.WriteLine("Adding Package '{0}' to solution '{1}'", package.name, SolutionUniqueName);
-                    AddPackageToSolution(SolutionUniqueName, package);
+                    AddPackageToSolution(SolutionUniqueName, package, componentType);
                 }
 
                 return package;

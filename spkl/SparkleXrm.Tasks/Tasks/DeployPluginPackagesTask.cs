@@ -54,7 +54,7 @@ namespace SparkleXrm.Tasks
                     try
                     {
                         var excludePluginSteps = this.ExcludePluginSteps || package.excludePluginSteps;
-                        pluginRegistration.RegisterPackage(nugetFilePath, package.packageprefix, excludePluginSteps);
+                        pluginRegistration.RegisterPackage(nugetFilePath, package.packageprefix, package.componenttype, excludePluginSteps);
                     }
 
                     catch (ReflectionTypeLoadException ex)
