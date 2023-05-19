@@ -38,6 +38,8 @@ namespace SparkleXrm.Tasks
 
         public List<string> Search(string path, string search)
         {
+            if (search == null) return new List<string>(); 
+
             var matcher = new Matcher(StringComparison.InvariantCultureIgnoreCase);
             if (search.StartsWith("..") || search.StartsWith("**") || search.StartsWith("\\"))
             {

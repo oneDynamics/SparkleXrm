@@ -404,28 +404,6 @@ namespace SparkleXrm.Tasks
                 }
 
             }
-            //_trace.WriteLine("Checking for orphaned PluginTypes: '{0}' ", plugin.Name);
-
-            //var sdkPluginTypes = ServiceLocator.Queries.GetPluginTypes(_ctx, plugin).Where(t => (t.IsWorkflowActivity ?? false) == isWorkflowActivity);
-
-            //foreach (var sdkPluginType in sdkPluginTypes)
-            //{
-            //    var pluginType = pluginTypes.Where(t => t.FullName == sdkPluginType.TypeName).FirstOrDefault();
-            //    if (pluginType == null)
-            //    {
-            //        _trace.WriteLine("Not Found, deleting: {0}", sdkPluginType.TypeName);
-
-            //        // First need to remove Steps on the type
-            //        var existingSteps = GetExistingSteps(sdkPluginType);
-            //        foreach (var step in existingSteps)
-            //        {
-            //            _trace.WriteLine("Deleting step '{0}'", step.Name);
-            //            _service.Delete(SdkMessageProcessingStep.EntityLogicalName, step.Id);
-            //        }
-            //        _trace.WriteLine("Deleting PluginType '{0}'", sdkPluginType.TypeName);
-            //        _service.Delete(PluginType.EntityLogicalName, sdkPluginType.Id);
-            //    }
-            //}
         }
 
         internal void RegisterPluginSteps(IEnumerable<Type> pluginTypes, PluginAssembly plugin, bool nugetAssembly = false)
