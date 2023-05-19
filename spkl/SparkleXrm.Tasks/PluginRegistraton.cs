@@ -203,7 +203,6 @@ namespace SparkleXrm.Tasks
             if (!packageFilePath.Name.EndsWith(".nupkg"))
                 return;
 
-            //TODO: Plugin types should be passed hwre
             var package = RegisterPackage(packageFilePath, packagePrefix, componentType);
 
             var plugins = (from p in _ctx.CreateQuery<PluginAssembly>()
@@ -215,21 +214,29 @@ namespace SparkleXrm.Tasks
                 foreach (var plugin in plugins)
                 {
                     var dir = $"{Path.GetTempPath()}spkl\\{Guid.NewGuid().ToString()}";
-                    Directory.CreateDirectory(dir);
-                    ZipFile.ExtractToDirectory(file, dir);
 
-                    using (var stream = new FileStream(file, FileMode.Open))
+                    var domain = AppDomain.CreateDomain(
+                        nameof(AdHocLoader), 
+                        AppDomain.CurrentDomain.Evidence, 
+                        new AppDomainSetup { 
+                            ApplicationBase = Path.GetDirectoryName(typeof(AdHocLoader).Assembly.Location) 
+                        });
+
+                    try
                     {
-                        var archive = new ZipArchive(stream);
-                        var fileName = archive.GetFiles().FirstOrDefault(f => f.Contains($"{plugin.Name}.dll"));
+                        var loader = (AdHocLoader)domain.CreateInstanceAndUnwrap(
+                            typeof(AdHocLoader).Assembly.FullName, typeof(AdHocLoader).FullName);
 
-                        var peekAssembly = Assembly.LoadFrom($"{dir}\\{fileName}");
-                        IEnumerable<Type> pluginTypes = Reflection.GetTypesImplementingInterface(peekAssembly, typeof(Microsoft.Xrm.Sdk.IPlugin));
-
+                        IEnumerable<Type> pluginTypes =  loader.GetTypes(dir, file, plugin);
                         if (pluginTypes.Any())
                         {
                             RegisterPluginSteps(pluginTypes, plugin, true);
                         }
+                    }
+                    finally
+                    {
+                        AppDomain.Unload(domain);
+                        Directory.Delete(dir, true);
                     }
                 }
             }
