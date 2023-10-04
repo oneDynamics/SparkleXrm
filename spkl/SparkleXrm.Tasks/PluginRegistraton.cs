@@ -239,7 +239,7 @@ namespace SparkleXrm.Tasks
                     }
                     catch(Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        _trace.WriteLine(ex.Message); 
                     }
                 }
             }
