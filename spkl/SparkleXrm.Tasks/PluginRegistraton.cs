@@ -215,28 +215,31 @@ namespace SparkleXrm.Tasks
                 {
                     var dir = $"{Path.GetTempPath()}spkl\\{Guid.NewGuid().ToString()}";
 
-                    var domain = AppDomain.CreateDomain(
-                        nameof(AdHocLoader), 
-                        AppDomain.CurrentDomain.Evidence, 
-                        new AppDomainSetup { 
-                            ApplicationBase = Path.GetDirectoryName(typeof(AdHocLoader).Assembly.Location) 
-                        });
 
                     try
                     {
-                        var loader = (AdHocLoader)domain.CreateInstanceAndUnwrap(
-                            typeof(AdHocLoader).Assembly.FullName, typeof(AdHocLoader).FullName);
+                        Directory.CreateDirectory(dir);
+                        ZipFile.ExtractToDirectory(file, dir);
 
-                        IEnumerable<Type> pluginTypes =  loader.GetTypes(dir, file, plugin);
-                        if (pluginTypes.Any())
+                        IEnumerable<Type> pluginTypes; 
+                        using (var stream = new FileStream(file, FileMode.Open))
+                        {
+                            var archive = new ZipArchive(stream);
+                            var fileName = archive.GetFiles().FirstOrDefault(f => f.Contains($"{plugin.Name}.dll"));
+
+                            var peekAssembly = Assembly.LoadFrom($"{dir}\\{fileName}");
+                            pluginTypes = Reflection.GetTypesImplementingInterface(peekAssembly, typeof(Microsoft.Xrm.Sdk.IPlugin));
+
+                        }
+
+                        if (pluginTypes != null && pluginTypes.Any())
                         {
                             RegisterPluginSteps(pluginTypes, plugin, true);
                         }
                     }
-                    finally
+                    catch(Exception ex)
                     {
-                        AppDomain.Unload(domain);
-                        Directory.Delete(dir, true);
+                        Console.WriteLine(ex.Message);
                     }
                 }
             }

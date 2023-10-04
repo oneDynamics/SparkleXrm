@@ -152,7 +152,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdHocLoader.cs" />
     <Compile Include="componenttype.cs" />
     <Compile Include="Config\IConfigFileService.cs" />
     <Compile Include="Config\PackageDeployConfig.cs" />
