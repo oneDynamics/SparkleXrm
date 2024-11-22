@@ -167,6 +167,7 @@ public enum MessageNameEnum
     CreateInstance,
     CreateKnowledgeArticleTranslation,
     CreateKnowledgeArticleVersion,
+    CreateMultiple,
     Delete,
     DeleteOpenInstances,
     DeliverIncoming,
@@ -223,6 +224,7 @@ public enum MessageNameEnum
     UnlockInvoicePricing,
     UnlockSalesOrderPricing,
     Update,
+    UpdateMultiple,
     ValidateRecurrenceRule,
     Win
 }
